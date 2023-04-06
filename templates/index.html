@@ -1,1 +1,13 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+
 <h1>Seja bem vindo</h1>
+
+<a href="admin/" target="_blank">Admin</a>
+
+<a href="{% url 'usuario:login' %}" target="_blank">Login</a>
+
+<a href="{% url 'usuario:cadastro' %}" target="_blank" >Cadastro</a>
+
+{% endblock %}

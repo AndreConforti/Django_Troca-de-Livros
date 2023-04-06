@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Cadastro{% endblock %}
+
+{% block 'body' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            
+        </div>
+        <div class="col-md">      
+            <h1>Cadastro</h1>
+            <hr>
+            {% if status == '0'%}
+                <div class="alert alert-success" role="alert">
+                    Usuário cadastrado com sucesso!
+                </div>
+            {% endif %}
+            {% if status == '1'%}
+                <div class="alert alert-danger" role="alert">
+                    ERRO! Nenhum campo pode estar vazio. Por favor, tente novamente.
+                </div>
+            {% endif %}
+            {% if status == '2'%}
+                <div class="alert alert-danger" role="alert">
+                    ERRO! O campo senha deve conter no mínimo 4 caracteres. Por favor, tente novamente
+                </div>
+            {% endif %}
+            {% if status == '3'%}
+                <div class="alert alert-danger" role="alert">
+                    ERRO! E-mail já cadastrado. Por favor, digite um e-mail válido.
+                </div>
+            {% endif %}
+            {% if status == '4'%}
+                <div class="alert alert-danger" role="alert">
+                    Erro interno do sistema. Por favor, tente novamente
+                </div>
+            {% endif %}
+            <form method="POST" action="{% url 'usuario:valida_cadastro' %}">
+                {% csrf_token %}
+                <label>Nome:</label>
+                <input type="text" name="nome" placeholder="Nome..." class="form-control">
+                <br>
+                <label>E-mail:</label>
+                <input type="email" name="email" placeholder="Email..." class="form-control">
+                <br>
+                <label>Senha:</label>
+                <input type="password" name="senha" placeholder="Senha..." class="form-control">
+                <br>
+                <input type="submit" value="Cadstrar" class="btn btn-success">
+            </form>
+        </div>
+        <div class="col-md">
+           
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
